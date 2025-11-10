@@ -8,7 +8,7 @@ import { escribirTareas } from "./utils/leerYescribir";
 
 const prompt = PromptSync();
 let tareas: Tarea[] = leerTareas();
-let contador: number = tareas.length;
+let contador: number = tareas.length; // las tareas inician en -1
 
 let opcion: number = -1;
 

@@ -20,7 +20,7 @@ function agregarTarea(tareas, contadorActual) {
         dificultad = 1;
         console.log("⚠️ Dificultad inválida, se asignara Fácil.");
     }
-    const vencimiento = prompt("Fecha de vencimiento: dd/mm/aaaa: ");
+    const vencimiento = prompt("Fecha de vencimiento: dd-mm-aaaa: ");
     const nueva = (0, tarea_1.crearTarea)(titulo, descripcion, estado, dificultad, vencimiento);
     tareas[contadorActual] = nueva;
     contadorActual++;

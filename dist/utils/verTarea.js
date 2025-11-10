@@ -25,7 +25,7 @@ function verTarea(tareas) {
         if (opcionVer === 1)
             filtro = "todas";
         else if (opcionVer === 2)
-            filtro = "pendiente";
+            filtro = "pendiente"; //poner en singular para que coincidan los filtros y muestre las tareas en cada estado correspondiente
         else if (opcionVer === 3)
             filtro = "en curso";
         else if (opcionVer === 4)

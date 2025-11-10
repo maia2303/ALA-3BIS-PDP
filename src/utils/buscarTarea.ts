@@ -11,7 +11,7 @@ export function buscarTarea(tareas: Tarea[]): void {
     for(let i = 0; i < tareas.length; i++){
         const tarea = tareas[i];
         const tituloBusq = tarea.titulo.toLowerCase();
-        const descripcionBusq = tarea.descripcion.toLowerCase();
+        const descripcionBusq = (tarea.descripcion || "").toLowerCase();
 
         if (tituloBusq.includes(palabra) || descripcionBusq.includes(palabra)) {
             encontrada[encontrada.length] = tarea;
@@ -22,7 +22,7 @@ export function buscarTarea(tareas: Tarea[]): void {
         console.log("❌ No se encontraron tareas.");
         return;
     }
-    for(let i = 0; i < tareas.length; i++) {
+    for(let i = 0; i < cantidadEncontrada; i++) {
         const tarea = encontrada[i];
         console.log(`[${i + 1}] ${tarea.titulo}`);
     }

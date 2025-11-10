@@ -37,6 +37,8 @@ exports.leerTareas = leerTareas;
 exports.escribirTareas = escribirTareas;
 const fs = __importStar(require("fs")); //permite leer y escribir archivos
 const archivo = "./tasks.json"; //indica la ruta del archivo que hay que leer
+const estadosValidos = ["pendiente", "en curso", "terminada", "cancelada"];
+const dificultadValida = [1, 2, 3];
 function leerTareas() {
     if (!fs.existsSync(archivo)) { //verifica que el archivo exista, si no existe devuelve un arreglo vacio
         return [];
@@ -45,8 +47,16 @@ function leerTareas() {
         const contenidoTareas = fs.readFileSync(archivo, "utf-8"); //try contiene lo que podría tener un error
         const tareasLeidas = JSON.parse(contenidoTareas);
         for (const tarea of tareasLeidas) {
-            if (!tarea.titulo || !tarea.dificultad || !tarea.estado || !tarea.creacion) {
-                console.log(" \n ⚠️ Error de formato: Una o más tareas no tienen los campos requeridos. ");
+            if (!tarea.titulo || !tarea.estado || !tarea.creacion) { //solo puedo poner las validaciones de los campos que no puedan ser null
+                console.error(" \n ⚠️ Error de formato: Una o más tareas no tienen los campos requeridos. "); // si no se cumplen las validaciones, no se va a poder leer el archivo
+                return [];
+            }
+            if (!estadosValidos.includes(tarea.estado)) {
+                console.log("\n ⚠️ Error de formato: Estado inválido en el archivo leído.");
+                return [];
+            }
+            if (!dificultadValida.includes(tarea.dificultad)) { // la dificultad deben ser números del 1 al 3, si no, el archivo no se lee
+                console.log("\n ⚠️ Error de formato: Dificultad inválida en el archivo leído. Lebe ser un número válido (1, 2 o 3).");
                 return [];
             }
         }

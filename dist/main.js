@@ -10,7 +10,7 @@ const verTarea_1 = require("./utils/verTarea");
 const leerYescribir_1 = require("./utils/leerYescribir");
 const prompt = (0, prompt_sync_1.default)();
 let tareas = (0, leerYescribir_1.leerTareas)();
-let contador = tareas.length;
+let contador = tareas.length; // las tareas inician en -1
 let opcion = -1;
 while (opcion !== 0) {
     console.log("\n ---Menú de tareas--- ");

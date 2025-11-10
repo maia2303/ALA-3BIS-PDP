@@ -8,7 +8,7 @@ export interface Tarea {
     dificultad: Dificultad;
     vencimiento: string | null; 
     creacion: string;
-    ultimaEdicion: string;
+    ultimaEdicion: string | null;
 }
 export function crearTarea (
     titulo: string,
